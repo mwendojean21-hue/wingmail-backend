@@ -18,7 +18,7 @@ def list_bird_types(db: Session = Depends(get_db)):
 def create_pigeon(payload: schemas.PigeonCreate,
                    current_user: models.User = Depends(get_current_user),
                    db: Session = Depends(get_db)):
-    bird_type = db.query(models.BirdType).get(payload.bird_type_id)
+    bird_type = db.query(models.BirdType).get(int(payload.bird_type_id))
     if not bird_type:
         raise HTTPException(status_code=404, detail="Espèce d'oiseau introuvable")
 
@@ -58,7 +58,7 @@ def upgrade_pigeon(pigeon_id: str, payload: schemas.PigeonUpgrade,
     if not pigeon:
         raise HTTPException(status_code=404, detail="Pigeon introuvable")
 
-    new_type = db.query(models.BirdType).get(payload.bird_type_id)
+    new_type = db.query(models.BirdType).get(int(payload.bird_type_id))
     if not new_type:
         raise HTTPException(status_code=404, detail="Espèce d'oiseau introuvable")
 

@@ -113,7 +113,7 @@ def grant_pigeon(user_id: str, payload: schemas.AdminPigeonGrant,
     user = db.query(models.User).get(user_id)
     if not user:
         raise HTTPException(status_code=404, detail="Utilisateur introuvable")
-    bird_type = db.query(models.BirdType).get(payload.bird_type_id)
+    bird_type = db.query(models.BirdType).get(int(payload.bird_type_id))
     if not bird_type:
         raise HTTPException(status_code=404, detail="Espèce d'oiseau introuvable")
 

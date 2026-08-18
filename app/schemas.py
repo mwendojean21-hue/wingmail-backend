@@ -1,6 +1,6 @@
 from datetime import datetime
 from typing import Optional, List
-from pydantic import BaseModel, EmailStr, Field
+from pydantic import BaseModel, EmailStr, Field, field_validator
 
 
 # ---------- Auth / Users ----------
@@ -62,7 +62,7 @@ class LocationUpdate(BaseModel):
 # ---------- Bird types ----------
 
 class BirdTypeOut(BaseModel):
-    id: int
+    id: str
     code: str
     display_name: str
     base_speed_mph: float
@@ -72,6 +72,11 @@ class BirdTypeOut(BaseModel):
     description: str
     sprite_key: str
 
+    @field_validator("id", mode="before")
+    @classmethod
+    def _stringify_id(cls, v):
+        return str(v)
+
     class Config:
         from_attributes = True
 
@@ -80,13 +85,13 @@ class BirdTypeOut(BaseModel):
 
 class PigeonCreate(BaseModel):
     name: str = Field(min_length=1, max_length=40)
-    bird_type_id: int
+    bird_type_id: str
     color: Optional[str] = "#e8e2d6"
     accessory: Optional[str] = None
 
 
 class PigeonUpgrade(BaseModel):
-    bird_type_id: int
+    bird_type_id: str
 
 
 class PigeonOut(BaseModel):
@@ -330,7 +335,7 @@ class FeathersAdjust(BaseModel):
 
 class AdminPigeonGrant(BaseModel):
     name: str = Field(min_length=1, max_length=40)
-    bird_type_id: int
+    bird_type_id: str
 
 
 # ---------- Avis / demandes (feedback) ----------
