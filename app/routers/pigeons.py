@@ -76,6 +76,30 @@ def upgrade_pigeon(pigeon_id: str, payload: schemas.PigeonUpgrade,
     return pigeon
 
 
+@router.post("/{pigeon_id}/boost-energy", response_model=schemas.PigeonOut)
+def boost_energy(pigeon_id: str, feathers: int,
+                  current_user: models.User = Depends(get_current_user),
+                  db: Session = Depends(get_db)):
+    """Recharge la jauge d'energie d'un pigeon avec des plumes (1 plume = 1 point d'energie)."""
+    pigeon = db.query(models.Pigeon).filter(
+        models.Pigeon.id == pigeon_id, models.Pigeon.owner_id == current_user.id
+    ).first()
+    if not pigeon:
+        raise HTTPException(status_code=404, detail="Pigeon introuvable")
+    if feathers <= 0:
+        raise HTTPException(status_code=400, detail="Le nombre de plumes doit être positif")
+    if pigeon.energy >= 100:
+        raise HTTPException(status_code=400, detail="Ce pigeon est déjà à pleine énergie")
+    if current_user.feathers_balance < feathers:
+        raise HTTPException(status_code=402, detail="Tu n'as pas assez de plumes")
+
+    current_user.feathers_balance -= feathers
+    pigeon.energy = min(100.0, pigeon.energy + feathers)
+    db.commit()
+    db.refresh(pigeon)
+    return pigeon
+
+
 @router.delete("/{pigeon_id}")
 def release_pigeon(pigeon_id: str, current_user: models.User = Depends(get_current_user),
                     db: Session = Depends(get_db)):
