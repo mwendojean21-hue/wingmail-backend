@@ -439,3 +439,24 @@ def rescue_fallen(payload: schemas.RescueRequest, db: Session = Depends(get_db),
     db.commit()
     db.refresh(message)
     return message
+
+
+@router.delete("/{message_id}")
+def delete_message(message_id: str, db: Session = Depends(get_db),
+                    current_user: models.User = Depends(get_current_user)):
+    """
+    Supprime un message de ta vue (boite de reception ou envoyes). Uniquement
+    possible une fois le vol termine (livre, perdu, capture, ou tombe) -
+    on ne touche jamais a un message encore en vol.
+    """
+    message = db.query(models.Message).get(message_id)
+    if not message:
+        raise HTTPException(status_code=404, detail="Message introuvable")
+    if message.sender_id != current_user.id and message.recipient_id != current_user.id:
+        raise HTTPException(status_code=403, detail="Tu ne peux pas supprimer ce message")
+    if message.status == models.MessageStatus.in_flight:
+        raise HTTPException(status_code=400, detail="Impossible de supprimer un message encore en vol")
+
+    db.delete(message)
+    db.commit()
+    return {"ok": True}

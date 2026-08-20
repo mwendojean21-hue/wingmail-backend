@@ -22,7 +22,7 @@ class Settings(BaseSettings):
 
     @property
     def admin_usernames_list(self) -> List[str]:
-        return [u.strip() for u in self.ADMIN_USERNAMES.split(",") if u.strip()]
+        return [u.strip().lower() for u in self.ADMIN_USERNAMES.split(",") if u.strip()]
 
     @property
     def cors_origins_list(self) -> List[str]:

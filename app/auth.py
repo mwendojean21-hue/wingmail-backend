@@ -49,6 +49,17 @@ def get_current_user(token: str = Depends(oauth2_scheme), db: Session = Depends(
     user = db.query(models.User).filter(models.User.id == user_id).first()
     if user is None:
         raise credentials_exception
+
+    # Auto-guerison : si ce nom d'utilisateur fait partie des admins declares
+    # mais que le compte n'est pas encore marque comme tel (ex: promu apres
+    # la creation du compte, ou apres une migration de base), on corrige ici
+    # plutot que d'attendre une reconnexion.
+    should_be_admin = user.username.lower() in settings.admin_usernames_list
+    if should_be_admin and not user.is_admin:
+        user.is_admin = True
+        db.commit()
+        db.refresh(user)
+
     return user
 
 

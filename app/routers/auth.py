@@ -36,7 +36,7 @@ def register(payload: schemas.UserCreate, request: Request, db: Session = Depend
         email=payload.email,
         hashed_password=hash_password(payload.password),
         display_name=payload.display_name or payload.username,
-        is_admin=payload.username in settings.admin_usernames_list,
+        is_admin=payload.username.lower() in settings.admin_usernames_list,
         referred_by_id=referrer.id if referrer else None,
     )
 
@@ -76,7 +76,7 @@ def login(payload: schemas.UserLogin, request: Request, db: Session = Depends(ge
         raise HTTPException(status_code=401, detail="Nom d'utilisateur ou mot de passe incorrect")
 
     # Promotion admin retroactive si le compte existait avant l'ajout de cette regle
-    should_be_admin = payload.username in settings.admin_usernames_list
+    should_be_admin = payload.username.lower() in settings.admin_usernames_list
     if should_be_admin and not user.is_admin:
         user.is_admin = True
 
