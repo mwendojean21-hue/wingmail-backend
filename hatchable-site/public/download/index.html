@@ -1,0 +1,149 @@
+<!doctype html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Wingmail — Télécharger l'application</title>
+<meta name="description" content="Télécharge Wingmail pour Android, Windows ou Linux. Une messagerie portée par de vrais oiseaux voyageurs virtuels." />
+<style>
+  :root {
+    --sky-top: #bfe0f5;
+    --sky-bottom: #eef7ec;
+    --ink: #2c3e40;
+    --primary: #3a6ea5;
+    --primary-dark: #2a5580;
+    --accent: #d98a3d;
+    --card-bg: #ffffffcc;
+    --radius: 18px;
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--ink);
+    background: linear-gradient(180deg, var(--sky-top) 0%, var(--sky-bottom) 55%, var(--sky-bottom) 100%);
+  }
+  .wrap { max-width: 960px; margin: 0 auto; padding: 0 24px; }
+
+  header.top {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 22px 0;
+  }
+  .brand { display: flex; align-items: center; gap: 10px; font-size: 22px; font-weight: 700; color: var(--primary-dark); text-decoration: none; }
+  nav.top-links a { color: var(--primary-dark); text-decoration: none; font-weight: 600; margin-left: 22px; font-size: 14px; }
+  nav.top-links a:hover { text-decoration: underline; }
+
+  .hero { text-align: center; padding: 40px 0 20px; }
+  .hero h1 { font-size: 36px; line-height: 1.15; margin: 0 0 14px; color: var(--primary-dark); }
+  .hero p.lead { font-size: 16px; color: #4c5c60; max-width: 600px; margin: 0 auto 10px; }
+
+  section.download { padding: 30px 0 70px; text-align: center; }
+
+  .download-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 18px; text-align: left; margin-top: 30px; }
+  .download-card {
+    background: var(--card-bg); border-radius: var(--radius); padding: 26px;
+    box-shadow: 0 4px 16px rgba(20,50,70,0.08); display: flex; flex-direction: column; gap: 14px;
+  }
+  .download-card .platform-icon { width: 44px; height: 44px; }
+  .download-card h3 { margin: 0; font-size: 17px; color: var(--primary-dark); }
+  .download-card p { margin: 0; font-size: 13px; color: #6b7f88; flex: 1; }
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 10px;
+    padding: 12px 20px; border-radius: 14px; font-weight: 700; font-size: 14.5px;
+    text-decoration: none; border: none; cursor: pointer;
+  }
+  .btn.primary { background: var(--primary); color: #fff; }
+  .btn.primary:hover { background: var(--primary-dark); }
+  .btn.outline { background: #fff; color: var(--primary-dark); border: 1.5px solid #cfe0ec; }
+  .version-tag { font-size: 12px; color: #8b9aa2; }
+
+  footer { padding: 30px 0 50px; text-align: center; font-size: 13px; color: #7c8a92; }
+  footer a { color: var(--primary); text-decoration: none; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <header class="top">
+    <a href="/" class="brand">
+      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#2a5580" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M4 15c2.5-6 8-9 12-8-1-2 .5-4.3 3-4-1 2 .3 4 2 4.6-1 3.2-4 5.4-8 4.9L11 17l-2.3-.6L10 13c-2.6 1-4.8.5-6-2Z" />
+      </svg>
+      Wingmail
+    </a>
+    <nav class="top-links">
+      <a href="/">Ouvrir l'application</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <h1>Télécharger Wingmail</h1>
+    <p class="lead">
+      Choisis ta plateforme. L'application web fonctionne aussi directement dans ton navigateur,
+      sans rien installer — <a href="/" style="color:var(--primary); font-weight:600;">ouvre-la ici</a>.
+    </p>
+  </section>
+
+  <section class="download">
+    <div class="download-grid">
+
+      <div class="download-card">
+        <svg class="platform-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M6.5 9.5v6a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-6" stroke="#3a6ea5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M6.5 9.5a5.5 5.5 0 0 1 11 0" stroke="#3a6ea5" stroke-width="1.6" stroke-linecap="round"/>
+          <path d="M4.5 10.5v4" stroke="#3a6ea5" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M19.5 10.5v4" stroke="#3a6ea5" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M9.5 17.5v2" stroke="#3a6ea5" stroke-width="1.8" stroke-linecap="round"/>
+          <path d="M14.5 17.5v2" stroke="#3a6ea5" stroke-width="1.8" stroke-linecap="round"/>
+          <circle cx="9.3" cy="6.8" r="0.55" fill="#3a6ea5"/>
+          <circle cx="14.7" cy="6.8" r="0.55" fill="#3a6ea5"/>
+          <path d="m8 4.2 1-1.4" stroke="#3a6ea5" stroke-width="1.4" stroke-linecap="round"/>
+          <path d="m16 4.2-1-1.4" stroke="#3a6ea5" stroke-width="1.4" stroke-linecap="round"/>
+        </svg>
+        <h3>Android</h3>
+        <p>Fichier APK à installer directement. Active "Sources inconnues" dans les paramètres si Android le demande.</p>
+        <a class="btn primary" href="/downloads/wingmail-android.apk" download>Télécharger l'APK</a>
+        <span class="version-tag">Version 1.0.0</span>
+      </div>
+
+      <div class="download-card">
+        <svg class="platform-icon" viewBox="0 0 24 24" fill="none">
+          <path d="M3 5.3 10.8 4.2v7.3H3Z" fill="#3a6ea5"/>
+          <path d="M11.8 4.1 21 2.8v8.6h-9.2Z" fill="#3a6ea5"/>
+          <path d="M3 12.5h7.8v7.3L3 18.7Z" fill="#3a6ea5"/>
+          <path d="M11.8 12.5H21v8.6l-9.2-1.3Z" fill="#3a6ea5"/>
+        </svg>
+        <h3>Windows</h3>
+        <p>Installeur .exe. Double-clique et suis les instructions ; désinstallation possible depuis le Panneau de configuration.</p>
+        <a class="btn primary" href="/downloads/wingmail-windows-setup.exe" download>Télécharger le .exe</a>
+        <span class="version-tag">Version 1.0.0</span>
+      </div>
+
+      <div class="download-card">
+        <svg class="platform-icon" viewBox="0 0 24 24" fill="none">
+          <ellipse cx="12" cy="9.5" rx="4" ry="4.6" fill="#2c3e40"/>
+          <path d="M8.3 12.5c-.6 1.6-1.8 2.6-2.4 4.2-.5 1.3.2 2.6 1.7 2.6.9 0 1.4-.5 2.2-.5.7 0 1.1.5 2.1.5s1.5-.5 2.2-.5c.8 0 1.3.5 2.2.5 1.5 0 2.2-1.3 1.7-2.6-.6-1.6-1.8-2.6-2.4-4.2" fill="#2c3e40"/>
+          <circle cx="10.2" cy="8.3" r="0.9" fill="#fff"/>
+          <circle cx="13.8" cy="8.3" r="0.9" fill="#fff"/>
+          <circle cx="10.2" cy="8.5" r="0.4" fill="#2c3e40"/>
+          <circle cx="13.8" cy="8.5" r="0.4" fill="#2c3e40"/>
+          <path d="M9 18.3c1-.5 1.8-1.4 1.8-2.6" stroke="#e0a840" stroke-width="1" stroke-linecap="round"/>
+          <path d="M15 18.3c-1-.5-1.8-1.4-1.8-2.6" stroke="#e0a840" stroke-width="1" stroke-linecap="round"/>
+        </svg>
+        <h3>Linux</h3>
+        <p>AppImage portable (aucune installation requise) ou paquet .deb pour Debian/Ubuntu.</p>
+        <a class="btn primary" href="/downloads/wingmail-linux.AppImage" download>Télécharger l'AppImage</a>
+        <a class="btn outline" href="/downloads/wingmail-linux.deb" download>Télécharger le .deb</a>
+        <span class="version-tag">Version 1.0.0</span>
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    © Wingmail — Application de messagerie ludique.
+  </footer>
+</div>
+
+</body>
+</html>

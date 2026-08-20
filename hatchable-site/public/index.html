@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title>Wingmail</title>
+    <link rel="icon" type="image/png" href="/app-icon-192.png" />
+    <link rel="apple-touch-icon" href="/app-icon-192.png" />
+    <meta name="theme-color" content="#3a6ea5" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@500;600;700&family=Kalam:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+      #wingmail-splash {
+        position: fixed;
+        inset: 0;
+        z-index: 9999;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 22px;
+        background: linear-gradient(180deg, #bfe0f5 0%, #eef7ec 100%);
+        transition: opacity 0.5s ease;
+      }
+      #wingmail-splash.fade-out {
+        opacity: 0;
+        pointer-events: none;
+      }
+      .wingmail-splash-ring-wrap {
+        position: relative;
+        width: 160px;
+        height: 160px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .wingmail-splash-ring {
+        position: absolute;
+        inset: 0;
+        border-radius: 50%;
+        border: 4px solid transparent;
+        border-top-color: #3a6ea5;
+        border-right-color: #3a6ea5;
+        animation: wingmail-spin 1s linear infinite;
+      }
+      .wingmail-splash-circle {
+        width: 128px;
+        height: 128px;
+        border-radius: 50%;
+        background: #ffffff;
+        box-shadow: 0 6px 20px rgba(20, 50, 70, 0.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        overflow: hidden;
+      }
+      .wingmail-splash-circle img {
+        width: 100px;
+        height: 100px;
+        object-fit: contain;
+      }
+      .wingmail-splash-title {
+        font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, sans-serif;
+        font-size: 26px;
+        font-weight: 700;
+        color: #2a5580;
+        letter-spacing: 0.5px;
+      }
+      @keyframes wingmail-spin {
+        from { transform: rotate(0deg); }
+        to { transform: rotate(360deg); }
+      }
+    </style>
+    <script type="module" crossorigin src="/assets/index--DYTSmn9.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-DgEuNjFs.css">
+  </head>
+  <body>
+    <div id="wingmail-splash">
+      <div class="wingmail-splash-ring-wrap">
+        <div class="wingmail-splash-ring"></div>
+        <div class="wingmail-splash-circle">
+          <img src="/splash-bird.png" alt="Wingmail" />
+        </div>
+      </div>
+      <div class="wingmail-splash-title">Wingmail</div>
+    </div>
+    <div id="root"></div>
+    <script>
+      window.addEventListener('load', () => {
+        setTimeout(() => {
+          const splash = document.getElementById('wingmail-splash')
+          if (!splash) return
+          splash.classList.add('fade-out')
+          setTimeout(() => splash.remove(), 550)
+        }, 700)
+      })
+    </script>
+  </body>
+</html>

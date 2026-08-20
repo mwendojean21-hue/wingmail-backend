@@ -1,0 +1,9 @@
+Dépose ici les fichiers compilés localement (voir DEPLOY_HATCHABLE.md) :
+
+- wingmail-android.apk
+- wingmail-windows-setup.exe
+- wingmail-linux.AppImage
+- wingmail-linux.deb
+
+Les noms doivent correspondre exactement à ceux référencés dans public/index.html,
+sinon les boutons de téléchargement renverront une erreur 404.
