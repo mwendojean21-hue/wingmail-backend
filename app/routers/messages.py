@@ -457,6 +457,20 @@ def delete_message(message_id: str, db: Session = Depends(get_db),
     if message.status == models.MessageStatus.in_flight:
         raise HTTPException(status_code=400, detail="Impossible de supprimer un message encore en vol")
 
+    # Si ce message a genere un vol retour automatique, ce vol retour pointe
+    # vers lui (outbound_message_id) : il faut le supprimer d'abord, sinon
+    # la contrainte de cle etrangere refuse la suppression.
+    return_legs = db.query(models.Message).filter(
+        models.Message.outbound_message_id == message.id
+    ).all()
+    for leg in return_legs:
+        if leg.status == models.MessageStatus.in_flight:
+            raise HTTPException(
+                status_code=400,
+                detail="Impossible de supprimer ce message : le pigeon est en train de rentrer chez lui, attends qu'il soit arrivé",
+            )
+        db.delete(leg)
+
     db.delete(message)
     db.commit()
     return {"ok": True}
