@@ -1,7 +1,0 @@
-# Ce projet est un site statique (page d'accueil + téléchargements).
-# Il n'a pas besoin d'authentification, de base de données ni de cron ici :
-# le vrai backend applicatif (comptes, pigeons, messages) tourne séparément
-# sur un hébergeur compatible Python (voir DEPLOY_HATCHABLE.md, partie 2).
-#
-# Rien à déclarer pour l'instant. Ajoute [auth], [[cron]], [[secret]], etc.
-# seulement si tu décides plus tard de porter des routes api/*.js sur Hatchable.
